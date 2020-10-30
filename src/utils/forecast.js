@@ -13,7 +13,12 @@ const forecast = (latitude, longitude, callback) => {
             const currentWeather = body.current;
             callback(
                 undefined
-                , `${currentWeather.weather_descriptions[0]}. The temperature is ${currentWeather.temperature} °F and it feels like ${currentWeather.feelslike} °F`)
+                , {
+                    description: `${currentWeather.weather_descriptions[0]} at ${currentWeather.observation_time}. The temperature is ${currentWeather.temperature} °F, feels like ${currentWeather.feelslike} °F`
+                    ,
+                    weatherIcon: currentWeather.weather_icons[0]
+                }
+            )
         }
     });
 }
